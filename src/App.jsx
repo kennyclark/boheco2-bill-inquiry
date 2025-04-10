@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="flex flex-col h-screen">
       <Header />
-      <Form />
+      <div className="flex place-content-center">
+        <Form />
+      </div>
       <Footer />
     </div>
   );
