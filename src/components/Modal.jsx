@@ -22,7 +22,7 @@ const Modal = ({ show, setShow, message, children }) => {
               onClick={() => setShow(false)}
               className="mt-4"
             >
-              Okay
+              OKAY
             </Button>
           </div>
         </div>

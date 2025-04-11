@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Button = ({ children, ...props }) => {
   return (
-    <button {...props} className="bg-b2-orange text-white px-6 py-3 rounded-lg font-medium text-2xl">
+    <button {...props} className="bg-amber-400 text-zinc-900 px-6 py-3 rounded-lg font-semibold text-2xl">
       {children}
     </button>
   );

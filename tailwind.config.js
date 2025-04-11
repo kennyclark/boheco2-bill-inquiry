@@ -10,8 +10,6 @@ export default {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        "b2-orange": "#FFAB06",
-        "b2-yellow": "#FFF005",
       },
     },
   },
