@@ -14,11 +14,11 @@ const Form = () => {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      const [month, year] = data.bill_month.split('-');
+      const [month, year] = data.bill_month.trim().split('-');
       const servicePeriodEnd = month + '/01/' + year;
       const payload = {
-        "ConsumerName": data.last_name + ", " + data.first_name,
-        "AccountNumber": data.account_number,
+        "ConsumerName": data.last_name.trim() + ", " + data.first_name.trim(),
+        "AccountNumber": data.account_number.trim(),
         "ServicePeriodEnd": servicePeriodEnd
       }
       const response = await fetch('https://bill-inquiry-api.onrender.com/api/v1/billInquires', {
@@ -30,15 +30,13 @@ const Form = () => {
       });
       if (response.ok) {
         const data = await response.json();
-
         setResponseMessage(data.msg);
-        setShowModal(true);
       } else {
         setResponseMessage("Something went wrong. Please try again.");
-        setShowModal(true);
       }
     } finally {
       setIsLoading(false);
+      setShowModal(true);
     }
   }
 
