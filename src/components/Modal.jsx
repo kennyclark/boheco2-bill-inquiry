@@ -8,7 +8,7 @@ const Modal = ({ show, setShow, message, children }) => {
       {show && (
         <div
           className="fixed top-0 left-0 w-full h-full flex items-center
-                     justify-center bg-black bg-opacity-50 z-50 px-8"
+                     justify-center bg-black/50 z-50 px-8"
         >
           <div
             className="flex flex-col gap-5 bg-white rounded-lg p-6 max-w-md"
