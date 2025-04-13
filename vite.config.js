@@ -1,8 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    TanStackRouterVite({
+      target: "react",
+      disableTypes: true,
+      quoteStyle: "double",
+      semicolons: true,
+    }),
+    react(),
+    tailwindcss(),
+  ],
 });

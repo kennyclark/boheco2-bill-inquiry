@@ -43,7 +43,7 @@ const Form = () => {
   return (
     <>
       <form
-        className="flex flex-col flex-grow gap-5 px-8 py-5 min-w-lg max-w-lg"
+        className="flex flex-col flex-grow gap-5 px-8 py-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputText
