@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [
     TanStackRouterVite({
       target: "react",
-      autoCodeSplitting: true,
       disableTypes: true,
       quoteStyle: "double",
       semicolons: true,

@@ -12,7 +12,7 @@ const Footer = () => {
           </span>
         </div>
         <hr className="border-gray-300/80 my-1" />
-        <div className="flex flex-row gap-4 place-content-center text-sm font-semibold mb-8 text-amber-600">
+        <div className="flex flex-row gap-4 place-content-center text-sm font-semibold mb-8">
           <Link to="/">Home</Link>
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/terms-of-service">Terms of Service</Link>
