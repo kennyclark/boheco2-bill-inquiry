@@ -5,10 +5,12 @@ import Button from "./components/Button";
 import InputText from "./components/InputText";
 import Modal from "./components/Modal";
 
+import { extractBillDetails } from "./utils";
+
 const Form = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [responseMessage, setResponseMessage] = useState('');
+  const [billingDetails, setBillingDetails] = useState({ error: null, data: null});
   const {register, formState: {errors}, handleSubmit} = useForm();
 
   const onSubmit = async (data) => {
@@ -30,9 +32,10 @@ const Form = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        setResponseMessage(data.msg);
+        const { error, data: extractedData } = extractBillDetails(data.msg);
+        setBillingDetails({ error, data: extractedData });
       } else {
-        setResponseMessage("Something went wrong. Please try again.");
+        setBillingDetails({ error: new Error("Something went wrong. Please try again."), data: null });
       }
     } finally {
       setIsLoading(false);
@@ -86,8 +89,31 @@ const Form = () => {
         <Modal
           show={showModal}
           setShow={setShowModal}
-          message={responseMessage}
-        />
+        >
+          { billingDetails.error
+            ? (
+              <div className="text-center text-2xl font-bold py-6">
+                {billingDetails.error.message}
+              </div>
+            )
+            : (
+                <div className="flex flex-col gap-3 text-center">
+                  <div className="text-7xl font-bold text-green-600">₱{billingDetails.data.amount}</div>
+                  <div className="uppercase font-semibold text-red-500">Amount due on: {billingDetails.data.dueDate}</div>
+                  <div className="flex justify-between">
+                    <div>
+                      <span className="font-semibold text-zinc-400">kWh USED: </span>
+                      <span className="font-bold">{billingDetails.data.kWhUsed}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-zinc-400">STATUS: </span>
+                      <span className="font-bold">{billingDetails.data.billStatus}</span>
+                    </div>
+                  </div>
+                </div>
+              )
+          }
+        </Modal>
       )}
     </>
   );

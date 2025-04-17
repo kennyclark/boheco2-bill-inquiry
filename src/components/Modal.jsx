@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Button from "./Button";
 
-const Modal = ({ show, setShow, message, children }) => {
+const Modal = ({ show, setShow, children }) => {
   return (
     <>
       {show && (
@@ -11,11 +11,8 @@ const Modal = ({ show, setShow, message, children }) => {
                      justify-center bg-black/50 z-50 px-8"
         >
           <div
-            className="flex flex-col gap-5 bg-white rounded-lg p-6 max-w-md"
+            className="flex flex-col gap-5 bg-white rounded-lg px-8 py-6 max-w-md"
           >
-            {message && message.split("\n").map((line, index) => (
-              line.trim() ? <p key={index}>{line}</p> : null
-            ))}
             {children}
             <Button
               type="button"
@@ -35,7 +32,6 @@ const Modal = ({ show, setShow, message, children }) => {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   setShow: PropTypes.func.isRequired,
-  message: PropTypes.string,
   children: PropTypes.node,
 }
 
