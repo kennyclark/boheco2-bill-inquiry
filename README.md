@@ -1,8 +1,39 @@
-# React + Vite
+# BOHECO 2 Bill Inquiry Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based web application that allows BOHECO 2 consumers to inquire about their electricity bill information. This client application communicates with a proxy server to securely retrieve billing details from BOHECO 2's system.
 
-Currently, two official plugins are available:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
+
+- Install [Bun](https://bun.com/docs/installation)
+
+## Environment Variables
+
+The following environment variables are required:
+
+| Variable | Description |
+| --- | --- |
+| VITE_API_BASE_URL | The base URL of the proxy server (e.g. http://localhost:3000) |
+
+## Running the App
+
+To start a development server:
+
+```bash
+bun dev
+```
+
+## Building for Production
+
+To build the app for production:
+
+```bash
+bun run build
+```
+
+## License
+
+This project is licensed under the **MIT License**.You are free to use, modify, distribute, and sell this software, provided that you include the original copyright notice and license terms.
+
+See [LICENSE](./LICENSE) for full details.
