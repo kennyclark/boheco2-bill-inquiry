@@ -23,7 +23,7 @@ const Form = () => {
         "AccountNumber": data.account_number.trim(),
         "ServicePeriodEnd": servicePeriodEnd
       }
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/billInquires`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/bill`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
