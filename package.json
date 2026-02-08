@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp ./src/robots.txt ./dist/robots.txt",
+    "build": "vite build",
     "lint": "bunx --bun biome lint ./src",
     "format": "bunx --bun biome format ./src",
     "preview": "vite preview"
