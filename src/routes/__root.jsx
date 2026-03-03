@@ -1,11 +1,11 @@
-import { Outlet, createRootRoute } from "@tanstack/react-router";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import Header from "../Header";
 import Footer from "../Footer";
+import Header from "../Header";
 
 export const Route = createRootRoute({
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
@@ -21,5 +21,5 @@ function RootComponent() {
       </div>
       <TanStackRouterDevtools />
     </>
-  )
+  );
 }
