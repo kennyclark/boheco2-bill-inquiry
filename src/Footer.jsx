@@ -8,7 +8,13 @@ const Footer = () => {
         <div>
           <span className="">DEVELOPED BY: </span>
           <span className="font-bold">
-            <a href="https://knydev.uk" target="_blank" rel="noopener noreferrer">KNYDEV</a>
+            <a
+              href="https://knydev.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              KNYDEV
+            </a>
           </span>
         </div>
         <hr className="border-gray-300/80 my-1" />
