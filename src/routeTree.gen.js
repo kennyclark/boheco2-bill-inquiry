@@ -10,66 +10,31 @@
 
 import { createFileRoute } from "@tanstack/react-router";
 
-// Import Routes
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as IndexRouteImport } from "./routes/index";
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as IndexImport } from "./routes/index";
+const TermsOfServiceLazyRouteImport = createFileRoute("/terms-of-service")();
+const PrivacyPolicyLazyRouteImport = createFileRoute("/privacy-policy")();
 
-// Create Virtual Routes
-
-const TermsOfServiceLazyImport = createFileRoute("/terms-of-service")();
-const PrivacyPolicyLazyImport = createFileRoute("/privacy-policy")();
-
-// Create/Update Routes
-
-const TermsOfServiceLazyRoute = TermsOfServiceLazyImport.update({
+const TermsOfServiceLazyRoute = TermsOfServiceLazyRouteImport.update({
   id: "/terms-of-service",
   path: "/terms-of-service",
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 }).lazy(() => import("./routes/terms-of-service.lazy").then((d) => d.Route));
-
-const PrivacyPolicyLazyRoute = PrivacyPolicyLazyImport.update({
+const PrivacyPolicyLazyRoute = PrivacyPolicyLazyRouteImport.update({
   id: "/privacy-policy",
   path: "/privacy-policy",
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 }).lazy(() => import("./routes/privacy-policy.lazy").then((d) => d.Route));
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: "/",
   path: "/",
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 });
-
-// Create and export the route tree
 
 const rootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyPolicyLazyRoute: PrivacyPolicyLazyRoute,
   TermsOfServiceLazyRoute: TermsOfServiceLazyRoute,
 };
-
-export const routeTree = rootRoute._addFileChildren(rootRouteChildren);
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.jsx",
-      "children": [
-        "/",
-        "/privacy-policy",
-        "/terms-of-service"
-      ]
-    },
-    "/": {
-      "filePath": "index.jsx"
-    },
-    "/privacy-policy": {
-      "filePath": "privacy-policy.lazy.jsx"
-    },
-    "/terms-of-service": {
-      "filePath": "terms-of-service.lazy.jsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren);
